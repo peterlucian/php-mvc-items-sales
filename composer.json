@@ -1,0 +1,24 @@
+{
+    "name": "picahielos/bookstore", 
+    "description": "Manages an online bookstore.", 
+    "minimum-stability": "stable", 
+    "license": "Apache-2.0", 
+    "type": "project", 
+    "authors": [ 
+        { "name": "Antonio Lopez", "email": "antonio.lopez.zapata@gmail.com" } 
+    ],
+    "require": {
+        "monolog/monolog": "^1.23",
+        "twig/twig": "^2.4",
+        "kreait/firebase-php": "^7.16"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    },
+    "autoload": { 
+        "psr-4": { 
+            "Bookstore\\": "src",
+            "Bookstore\\Tests\\": "tests"
+        } 
+    }
+}

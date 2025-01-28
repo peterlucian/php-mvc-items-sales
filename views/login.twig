@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+    {% if errorMessage is defined %}
+        <div class="container">
+            <h2>{{ errorMessage }}</h2>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <form  action="/login" method="POST">
+        <div class="form-group mb-3">
+            <input class="form-control" type="text" name="email" class="search-field" placeholder="Enter your email...">
+        </div>
+        <div class="form-group mb-3">
+            <input class="form-control" type="password" name="password" class="search-field" placeholder="Enter your password...">
+        </div>
+        <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary" name="login"> Login </button>
+        </div>
+        </form>
+    </div>
+{% endblock %}

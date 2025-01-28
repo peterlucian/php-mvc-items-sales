@@ -1,0 +1,7 @@
+{
+    "db": { 
+        "user": "", 
+        "password": "" 
+    },
+    "log": "/var/log/itemstore.log"
+}

@@ -1,0 +1,25 @@
+{ 
+    "": { 
+        "controller": "Item", 
+        "method": "getAll" 
+    },
+    "items": { 
+        "controller": "Item", 
+        "method": "getAll" 
+    },
+    "login": { 
+        "controller": "Customer", 
+        "method": "login" 
+    },
+    "logout": { 
+        "controller": "Customer", 
+        "method": "logout",
+        "login": true 
+    },
+    "save-item": { 
+        "controller": "Item",
+        "method": "saveItem", 
+        "login": true
+    }
+
+}
