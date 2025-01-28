@@ -10,10 +10,10 @@ class ItemController extends AbstractController {
     public function getAllWithPage($page): string {
         $itemModel = new ItemModel($this->db);
         $items = $itemModel->getAll($page, self::PAGE_LENGTH);
-        $userid = $this->request->getSession()->get('user');
+        //$userid = $this->request->getSession()->get('user');
         $properties = [
             'items' => $items,
-            'userid' => $userid
+            //'userid' => $userid
             //'currentPage' => $page,
             //'lastPage' => count($books) < self::PAGE_LENGTH
             ];
@@ -24,7 +24,7 @@ class ItemController extends AbstractController {
         return $this->getAllWithPage(1);
     }
 
-    public function saveItem(): string {
+    public function save(): string {
         if (!$this->request->isPost()) {
             return $this->render('save_item.twig', []);
         }
@@ -59,7 +59,67 @@ class ItemController extends AbstractController {
 
         //$newController = new ItemController($this->di, $this->request);
         return $this->getAll();
-        
+
     }
+
+
+    public function update($id): string {
+
+        $itemModel = new ItemModel($this->db);
+
+        // try {
+        //     $item = $itemModel->getById($id);
+        //     $item['key'] = $id;
+        //     return $this->render('update_item.twig', $item);
+
+        // } catch (\Exception $e) {
+        //     $properties = [ 'errorMessage' => 'Error searching for this particular item id.' ];
+        //     //$this->log->error( 'Error buying book: ' . $e->getMessage() );
+        //     return $this->render('error.twig', $properties);
+        // }
+
+        // if (!$this->request->isPost()) {
+        //     return $this->render('update_item.twig', []);
+        // }
+
+        $params = $this->request->getParams();
+        if (!$params->has('productName') && !$params->has('productDescription') && !$params->has('price') && !$params->has('imageUrl')) {
+            try {
+                $item = $itemModel->getById($id);
+                $item['key'] = $id;
+                return $this->render('update_item.twig', $item);
     
+            } catch (\Exception $e) {
+                $properties = [ 'errorMessage' => 'Error searching for this particular item id.' ];
+                //$this->log->error( 'Error buying book: ' . $e->getMessage() );
+                return $this->render('error.twig', $properties);
+            }
+        }
+
+        $productName = $params->getString('productName');
+        $productDescription = $params->getString('productDescription');
+        $imageUrl = $params->getString('imageUrl');
+        $price = $params->getInt('price');
+
+        $data = [
+            'productName' => $productName,
+            'description' => $productDescription,
+            'imageUrl' => $imageUrl,
+            'price' => $price
+        ];
+
+        try {
+            $item = $itemModel->updateById($id, $data);
+
+        } catch (\Exception $e) {
+            $properties = [ 'errorMessage' => 'Error updating for this particular item id.' ];
+            //$this->log->error( 'Error buying book: ' . $e->getMessage() );
+            return $this->render('error.twig', $properties);
+        }
+
+        //$newController = new ItemController($this->di, $this->request);
+        return $this->getAll();
+
+    }
+
 }

@@ -10,7 +10,7 @@ class Router {
     private $di;
     private static $regexPatters = [
         'number' => '\d+',
-        'string' => '\w'
+        'string' => '[\w&.\-]+'
     ]; 
     
     public function __construct(DependencyInjector $di) {

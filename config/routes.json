@@ -16,10 +16,17 @@
         "method": "logout",
         "login": true 
     },
-    "save-item": { 
+    "save": { 
         "controller": "Item",
-        "method": "saveItem", 
+        "method": "save", 
         "login": true
+    },
+    "update/:id": {
+        "controller": "Item",
+        "method": "update",
+        "params": { 
+            "id": "string" 
+        }
     }
 
 }
