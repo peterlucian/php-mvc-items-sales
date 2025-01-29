@@ -24,6 +24,7 @@
     "update/:id": {
         "controller": "Item",
         "method": "update",
+        "login": true,
         "params": { 
             "id": "string" 
         }

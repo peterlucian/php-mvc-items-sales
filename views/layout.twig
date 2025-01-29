@@ -193,13 +193,13 @@
 
             <div class="header-user-actions">
             {% if session.user is defined %}
-            <a href="logout">
+            <a href="/logout">
                 <button class="action-btn">
                 <ion-icon name="log-out-outline"></ion-icon>
                 </button>
             </a>
             {% else %}
-            <a href="login">
+            <a href="/login">
                 <button class="action-btn">
                 <ion-icon name="person-outline"></ion-icon>
                 </button>
@@ -209,7 +209,7 @@
                 <ion-icon name="heart-outline"></ion-icon>
                 <span class="count">0</span>
             </button>
-            <a href="save">
+            <a href="/save">
             <button class="action-btn">
                 <ion-icon name="bag-handle-outline"></ion-icon>
             </button>
