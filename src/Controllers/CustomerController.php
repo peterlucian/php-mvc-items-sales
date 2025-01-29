@@ -26,7 +26,7 @@ class CustomerController extends AbstractController {
         } 
         //setcookie('user', $customer->getId());
         $this->request->getSession()->set('user', $customer->getId());
-        
+        $this->view->addGlobal('session', $_SESSION);
         
         $newController = new ItemController($this->di, $this->request);
         return $newController->getAll();
@@ -34,6 +34,7 @@ class CustomerController extends AbstractController {
 
     public function logout(){
         $this->request->getSession()->clear();
+        $this->view->addGlobal('session', $_SESSION);
         $this->request->getSession()->destroy();
         
         
