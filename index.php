@@ -32,7 +32,7 @@ $config = new Config();
 // );
 
 $factory = (new Factory)
-    ->withServiceAccount('php-firebase-eccomerce-firebase-adminsdk-md6r1-e9b43468bb.json')
+    ->withServiceAccount('php-firebase-eccomerce-firebase-adminsdk-md6r1-772505f1ee.json')
     ->withDatabaseUri('https://php-firebase-eccomerce-default-rtdb.firebaseio.com/');
 
     $db = $factory->createDatabase();
